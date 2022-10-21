@@ -19,7 +19,7 @@ jobs:
       - name: hadolint
         uses: reviewdog/action-hadolint@v1
         with:
-          reporter: github-check
+          reporter: github-pr-review
   staticcheck:
     name: runner / staticcheck
     runs-on: ubuntu-latest
@@ -32,6 +32,7 @@ jobs:
         with:
           filter_mode: nofilter
           github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
   golangci-lint:
     runs-on: ubuntu-latest
     steps:
@@ -42,6 +43,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           golangci_lint_flags: "--config=.github/workflows/lint_configs/.golangci.yml ./go"
+          reporter: github-pr-review
   rails_best_practices:
     name: runner / rails_best_practices
     runs-on: ubuntu-latest
@@ -65,7 +67,7 @@ jobs:
         with:
           rubocop_version: gemfile
           rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
-          reporter: github-check
+          reporter: github-pr-review
   reek:
     name: runner / reek
     runs-on: ubuntu-latest
@@ -79,7 +81,7 @@ jobs:
         uses: reviewdog/action-reek@v1
         with:
           reek_version: gemfile
-          reporter: github-check
+          reporter: github-pr-review
   brakeman:
     name: runner / brakeman
     runs-on: ubuntu-latest
@@ -94,4 +96,4 @@ jobs:
         uses: reviewdog/action-brakeman@v2
         with:
           brakeman_version: 4.8.2
-          reporter: github-check
+          reporter: github-pr-review
