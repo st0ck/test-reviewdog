@@ -10,11 +10,11 @@ func Main() {
 
 	x := 2
 	x += 1
-	fmt.Sprintf("%d")
+	  fmt.Sprintf("%d")
 
 	os.Open("main1.go")
 
-	os.ReadFile("main1.go")
+	os.ReadFile("main1.go" )
 }
 
 func unused1(unusedParam int) error {
